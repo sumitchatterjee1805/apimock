@@ -3,6 +3,8 @@ import prodRoutes from './prodapis';
 
 let routes = [];
 routes.push(testRoutes);
-routes.push(prodRoutes);
+prodRoutes.forEach(e => {
+    routes.push(e);
+});
 
 export default routes;
