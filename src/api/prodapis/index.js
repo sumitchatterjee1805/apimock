@@ -10,6 +10,11 @@ let routes = [
     method: 'POST',
     path: '/csv2json',
     handler: handlers.csv2json
+  },
+  {
+    method: 'GET',
+    path: '/dynamicdelay',
+    handler: handlers.dynamicdelay
   }
 ];
 
