@@ -30,17 +30,18 @@ const handleFileUpload = file => {
 export let loop = (request, h) => {
   let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let sum = 0;
-
-  numbers.forEach(n => {
-    console.log(`Trying to add ${n}`);
-    adder(sum, n)
-      .then(res => {
-        console.log(`Current sum is ${n}`);
-        sum = res
-      });
+  return new Promise(resolve => {
+    numbers.forEach(n => {
+      adder(sum, n)
+        .then(res => {
+          console.log(`Trying to add ${n}`);
+          sum += res;
+          console.log(`Current sum is ${sum}`);
+          if(n === numbers[numbers.length-1])
+            resolve(sum);
+        });
+    });
   });
-
-  return sum;
 };
 
 export let csv2json = async (request, h) => {
